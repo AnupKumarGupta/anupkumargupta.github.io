@@ -1,0 +1,53 @@
+# Dependencies
+highlighter:      rouge
+
+
+gems:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+
+# Permalinks
+permalink:              blog/:categories/:title/
+# relative_permalinks: true
+
+# Setup
+title:            Anup Kumar Gupta
+tagline:          'Coder | Writer | Open Source Enthusiast'
+url:              http://anupkumargupta.me
+baseurl:          '/'
+
+author:
+  name:           'Anup Kumar Gupta'
+  url:            'http://anupkumargupta.me'
+  email:          'contact@anupkumargupta.me'
+  github:         'https://github.com/AnupKumarGupta'
+  stackoverflow:  'http://stackoverflow.com/users/6521550/anup-kumar-gupta'
+  linkedin:       'https://www.linkedin.com/in/anupkumargupta/'
+
+
+
+collections:
+  - projects
+  - blog
+
+
+paginate:         5
+
+# Custom vars
+version:          2.1.0
+
+github:
+  repo:           https://github.com/AnupKumarGupta/anupkumargupta.github.io
+
+excerpt_separator: "<!--/excerpt-->"
+
+disqus:
+  shortname: anupkumarguptablog
+
+  # Google services
+google_analytics: UA-98306136-1
+
+markdown: kramdown

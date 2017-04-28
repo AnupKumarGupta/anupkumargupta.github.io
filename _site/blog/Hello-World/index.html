@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <!-- SEO Tags -->
+  <!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>Word2Vector - Anup Kumar Gupta</title>
+<meta property="og:title" content="Word2Vector" />
+<meta name="description" content="This tutorial covers the skip gram neural network architecture for Word2Vec. We will cover, what are word vectors? What are different approaches to build a Word2Vec system ? Finally we dive deep and will try to build word2vec, the skip-gram model.." />
+<meta property="og:description" content="This tutorial covers the skip gram neural network architecture for Word2Vec. We will cover, what are word vectors? What are different approaches to build a Word2Vec system ? Finally we dive deep and will try to build word2vec, the skip-gram model.." />
+<link rel="canonical" href="http://localhost:4000//blog/Hello-World/" />
+<meta property="og:url" content="http://localhost:4000//blog/Hello-World/" />
+<meta property="og:site_name" content="Anup Kumar Gupta" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-04-28T00:00:00+05:30" />
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "BlogPosting",
+"headline": "Word2Vector",
+"datePublished": "2017-04-28T00:00:00+05:30",
+"description": "This tutorial covers the skip gram neural network architecture for Word2Vec. We will cover, what are word vectors? What are different approaches to build a Word2Vec system ? Finally we dive deep and will try to build word2vec, the skip-gram model..",
+"url": "http://localhost:4000//blog/Hello-World/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <title>
+    
+      Word2Vector &middot; Anup Kumar Gupta
+    
+  </title>
+
+  <!-- CSS 474588-->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/font-awesome-animations.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+       displayMath: [ ['$$', '$$'], ["\[", "\]"] ],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     }
+     //,
+     //displayAlign: "left",
+     //displayIndent: "2em"
+   });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+</head>
+
+
+  <body>
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+<p style="margin-left:30px">
+      <center>
+        <i class="fa fa-circle-o faa-burst animated magic-icon"></i></p>
+      </center>
+      <h1>
+        <a href="/">
+          Anup Kumar Gupta
+        </a>
+      </h1>
+      <p class="lead">Coder | Writer | Open Source Enthusiast</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <!-- <a class="sidebar-nav-item" href="/">Home</a> -->
+
+      
+      <a class="sidebar-nav-item" href="/projects/">Projects</a>
+
+      <a class="sidebar-nav-item" href="/about/">About</a>
+
+
+    </nav>
+
+
+        <ul class="list-inline" id="sidebar-buttons">
+            <li>
+                <a href="mailto:contact@anupkumargupta.me" class="btn-social btn-outline" title="E-Mail me">
+                    <i class="fa fa-fw fa-at"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/AnupKumarGupta" target="_blank" class="btn-social btn-outline" title="Say Hi AnupKumarGupta on GitHub">
+                    <i class="fa fa-fw fa-github"></i>
+                </a>
+            </li>
+
+            <li>
+               <a href="http://stackoverflow.com/users/6521550/anup-kumar-gupta" target="_blank" class="btn-social btn-outline" title="AnupKumarGupta on SO">
+                   <i class="fa fa-fw fa-stack-overflow"></i>
+               </a>
+           </li>
+            <li>
+                <a href="" target="_blank" class="btn-social btn-outline" title="Find me on LinkedIn">
+                    <i class="fa fa-fw fa-linkedin"></i>
+                </a>
+            </li>
+
+
+        </ul>
+    <p class="small">&copy; 2017.  <i class="fa fa-heart"></i> Peace <i class="fa fa-laptop"></i> </p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Word2Vector</h1>
+  <span class="post-date">28 Apr 2017</span>
+  <p>This tutorial covers the skip gram neural network architecture for Word2Vec. We will cover, what are word vectors ? What are different approaches to build a Word2Vec system ? Finally we dive deep and will try to build word2vec, the skip-gram model.</p>
+
+<p>Let’s begin then…</p>
+
+<p>Machine learning applications on Natural Language are an extremely important tool in the data scientist’s toolbox. One can implement autocompleter, auto-suggester, spam detector in your spam folder or even a text summarizer. When we are playing around with text data, we come across one of the most important aspect :  <code class="highlighter-rouge">text classification</code>.</p>
+
+<p>In text classification, the data scientist tries to develop an algorithm that can figure out what a piece of text says. For example if we are given a word or phrase,the system must be able to figure out whether it is related to  a provided article or not? Or whether a proposed title is appropriate for a given novel or not?</p>
+
+<p>So how will one tackle the problem of relating a word to an article ? One of the most naive approach is to take the word, simply scan the article and find out the occurrence of the word. But is it failproof?</p>
+
+<p>I guess no. Lets explore some pitfalls of a naive approach to the classification problem.In many cases traditional text classification can be difficult to scale, because of the order of the vocabulary, which counts in the thousands or tens of thousands. In such a case applying a naive approach may not end up with desired results.</p>
+
+<p>Considering the above mentioned articles on cats. If we naively  try to find the words “kitty” or “kitten”, we may end up stating that the words are not all related to the article. Moreover this approach requires a great extent of human intervention.</p>
+
+<p>One solution to these problem is to move to Word2Vec for the processing of our unstructured text data. Word2Vec (W2V) is an algorithm that takes every word in our vocabulary and turns it into a unique vector that can be added, subtracted, and manipulated in ways just like a vector in space.</p>
+
+<p>Once these vectors are generated, they end up displaying very interesting relationships between one another. Since the vectors are mathematical entities, we can perform operations such as adding and subtraction on them. We can get amazing results by creating simple word vector equations such:</p>
+
+<p><code class="highlighter-rouge">KING - MALE + FEMALE = QUEEN</code></p>
+
+<p>Also its worth mentioning that, words with similar meaning tend to have <a href="https://en.wikipedia.org/wiki/Cosine_similarity">similar vectors</a>. 
+In words of J.R.Firth</p>
+
+<blockquote>
+  <p>“You shall know a word by the company	it keeps”</p>
+</blockquote>
+
+<p>Now lets dive down, how to start build up these vectors. At first step we start with something known as <code class="highlighter-rouge">one hot encoding vector</code>. A <code class="highlighter-rouge">one hot encoding vector</code> is a vector with one 1 and other entries as 0s. Let’s learn about it, with a small example. Consider a vocabulary with 4 words, {cat, dog, man, kitty}. Now the one hot encoding vector for each word will be of shape <code class="highlighter-rouge">1 X size_of_vocab</code> which turns out to <code class="highlighter-rouge">1 X 4</code>. The vectors for this vocab will be as follows:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cat :   [1 0 0 0 ]
+dog :   [0 1 0 0 ]
+man :   [0 0 1 0 ]
+kitty : [0 0 0 1 ]
+</code></pre>
+</div>
+
+<p>A point worth noting is that no two vectors have 1 at same index. Also it’s clear that till now, there is no natural	notion of similarity in	a set of one-hot vectors. We aim that somehow, we modify these vectors such that, two words with a similar meaning have similar vectors. We will try to achieve something like this.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cat :   [1.0  0.2  0.3  0.9 ]
+kitty : [0.9  0.1  0.1  1.0 ]
+man :   [0.1  0.3  1.0  0.3 ]
+</code></pre>
+</div>
+
+<p>We can now see that there is a sense of similarity between cat and kitty, but at the same time man differs from cat or kitty from a great distance.</p>
+
+<hr />
+<p>We will try to define a model that aims to predict the context words given a center word.</p>
+
+<script type="math/tex; mode=display">P(context\mathbin{\vert} W_t > 0)</script>
+
+<p>where W_t is the center word. Our model will have a loss function.</p>
+
+<script type="math/tex; mode=display">J = 1 - P( W_{-t} \mathbin{\vert} W_t  )</script>
+
+<p>Where $ W_{-t} $ are all the words except the center word. We try to put almost all words of the corpus as the center word $ W_t $ and perform operations such as to minimize the loss. We keep adjusting the vector representations of words so as to minimize this loss. The basic idea is to have a model that tries to predict from given input, calculates loss and then tries to minimize it. ( <em>Good Boy Model</em>)</p>
+
+<p>We have two brilliant ways to perform this task of minimizing the loss. There are two algorithms:</p>
+
+<ol>
+  <li>Continuous Bag of Words (CBOW)</li>
+  <li>Skip-grams (SG)</li>
+</ol>
+
+<p>Algorithmically,both of these architectures are similar, except that CBOW predicts center words from context words, while the skip-gram does the inverse and predicts source context-words from the center words.</p>
+
+<p>For example, if we have the sentence: <em>“The quick brown fox jumps”</em>, then CBOW tries to predict <em>“brown”</em> from <em>“the”</em>, <em>“quick”</em>, <em>“fox”</em> and <em>“jumps”</em>, while Skip-Gram tries to predict <em>“the”</em>, <em>“quick”</em>, <em>“fox”</em> and <em>“jumps”</em> from <em>“brown”</em>.</p>
+
+<hr />
+<p>######Word2Vec using Skip Gram model</p>
+
+<p>For a given word( i.e. center word) we will try to predict surroundings words in a window of radius(say m).</p>
+
+<hr />
+<p>######Equations and Figures</p>
+
+<hr />
+<p>/*Lets us talk in mathematical equations. Suppose we T words, labeled as t=1,2..T.</p>
+
+<p>For each word t belonging to T, we will calculate probability of occurrence of surrounding words in a radius of ‘m’.
+*/</p>
+
+<p>We have our objective function something like this,</p>
+
+<hr />
+<p>######More is yet to come</p>
+
+<hr />
+
+
+</div>
+
+  
+
+
+
+<!-- <div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+  </ul>
+</div> -->
+
+
+    </div>
+  </body>
+
+</html>

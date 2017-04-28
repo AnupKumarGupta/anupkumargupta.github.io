@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Anup Kumar Gupta</title>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2017-04-28T22:45:53+05:30</updated>
+ <id>http://localhost:4000</id>
+ <author>
+   <name>Anup Kumar Gupta</name>
+   <email>contact@anupkumargupta.me</email>
+ </author>
+
+ 
+ <entry>
+   <title>Word2Vector</title>
+   <link href="http://localhost:4000/blog/Hello-World/"/>
+   <updated>2017-04-28T00:00:00+05:30</updated>
+   <id>http://localhost:4000/blog/Hello World</id>
+   <content type="html">&lt;p&gt;This tutorial covers the skip gram neural network architecture for Word2Vec. We will cover, what are word vectors ? What are different approaches to build a Word2Vec system ? Finally we dive deep and will try to build word2vec, the skip-gram model.&lt;/p&gt;
+
+&lt;p&gt;Let’s begin then…&lt;/p&gt;
+
+&lt;p&gt;Machine learning applications on Natural Language are an extremely important tool in the data scientist’s toolbox. One can implement autocompleter, auto-suggester, spam detector in your spam folder or even a text summarizer. When we are playing around with text data, we come across one of the most important aspect :  &lt;code class=&quot;highlighter-rouge&quot;&gt;text classification&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;In text classification, the data scientist tries to develop an algorithm that can figure out what a piece of text says. For example if we are given a word or phrase,the system must be able to figure out whether it is related to  a provided article or not? Or whether a proposed title is appropriate for a given novel or not?&lt;/p&gt;
+
+&lt;p&gt;So how will one tackle the problem of relating a word to an article ? One of the most naive approach is to take the word, simply scan the article and find out the occurrence of the word. But is it failproof?&lt;/p&gt;
+
+&lt;p&gt;I guess no. Lets explore some pitfalls of a naive approach to the classification problem.In many cases traditional text classification can be difficult to scale, because of the order of the vocabulary, which counts in the thousands or tens of thousands. In such a case applying a naive approach may not end up with desired results.&lt;/p&gt;
+
+&lt;p&gt;Considering the above mentioned articles on cats. If we naively  try to find the words “kitty” or “kitten”, we may end up stating that the words are not all related to the article. Moreover this approach requires a great extent of human intervention.&lt;/p&gt;
+
+&lt;p&gt;One solution to these problem is to move to Word2Vec for the processing of our unstructured text data. Word2Vec (W2V) is an algorithm that takes every word in our vocabulary and turns it into a unique vector that can be added, subtracted, and manipulated in ways just like a vector in space.&lt;/p&gt;
+
+&lt;p&gt;Once these vectors are generated, they end up displaying very interesting relationships between one another. Since the vectors are mathematical entities, we can perform operations such as adding and subtraction on them. We can get amazing results by creating simple word vector equations such:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;KING - MALE + FEMALE = QUEEN&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Also its worth mentioning that, words with similar meaning tend to have &lt;a href=&quot;https://en.wikipedia.org/wiki/Cosine_similarity&quot;&gt;similar vectors&lt;/a&gt;. 
+In words of J.R.Firth&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“You shall know a word by the company	it keeps”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Now lets dive down, how to start build up these vectors. At first step we start with something known as &lt;code class=&quot;highlighter-rouge&quot;&gt;one hot encoding vector&lt;/code&gt;. A &lt;code class=&quot;highlighter-rouge&quot;&gt;one hot encoding vector&lt;/code&gt; is a vector with one 1 and other entries as 0s. Let’s learn about it, with a small example. Consider a vocabulary with 4 words, {cat, dog, man, kitty}. Now the one hot encoding vector for each word will be of shape &lt;code class=&quot;highlighter-rouge&quot;&gt;1 X size_of_vocab&lt;/code&gt; which turns out to &lt;code class=&quot;highlighter-rouge&quot;&gt;1 X 4&lt;/code&gt;. The vectors for this vocab will be as follows:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cat :   [1 0 0 0 ]
+dog :   [0 1 0 0 ]
+man :   [0 0 1 0 ]
+kitty : [0 0 0 1 ]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;A point worth noting is that no two vectors have 1 at same index. Also it’s clear that till now, there is no natural	notion of similarity in	a set of one-hot vectors. We aim that somehow, we modify these vectors such that, two words with a similar meaning have similar vectors. We will try to achieve something like this.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cat :   [1.0  0.2  0.3  0.9 ]
+kitty : [0.9  0.1  0.1  1.0 ]
+man :   [0.1  0.3  1.0  0.3 ]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We can now see that there is a sense of similarity between cat and kitty, but at the same time man differs from cat or kitty from a great distance.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;We will try to define a model that aims to predict the context words given a center word.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P(context\mathbin{\vert} W_t &gt; 0)&lt;/script&gt;
+
+&lt;p&gt;where W_t is the center word. Our model will have a loss function.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J = 1 - P( W_{-t} \mathbin{\vert} W_t  )&lt;/script&gt;
+
+&lt;p&gt;Where $ W_{-t} $ are all the words except the center word. We try to put almost all words of the corpus as the center word $ W_t $ and perform operations such as to minimize the loss. We keep adjusting the vector representations of words so as to minimize this loss. The basic idea is to have a model that tries to predict from given input, calculates loss and then tries to minimize it. ( &lt;em&gt;Good Boy Model&lt;/em&gt;)&lt;/p&gt;
+
+&lt;p&gt;We have two brilliant ways to perform this task of minimizing the loss. There are two algorithms:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Continuous Bag of Words (CBOW)&lt;/li&gt;
+  &lt;li&gt;Skip-grams (SG)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Algorithmically,both of these architectures are similar, except that CBOW predicts center words from context words, while the skip-gram does the inverse and predicts source context-words from the center words.&lt;/p&gt;
+
+&lt;p&gt;For example, if we have the sentence: &lt;em&gt;“The quick brown fox jumps”&lt;/em&gt;, then CBOW tries to predict &lt;em&gt;“brown”&lt;/em&gt; from &lt;em&gt;“the”&lt;/em&gt;, &lt;em&gt;“quick”&lt;/em&gt;, &lt;em&gt;“fox”&lt;/em&gt; and &lt;em&gt;“jumps”&lt;/em&gt;, while Skip-Gram tries to predict &lt;em&gt;“the”&lt;/em&gt;, &lt;em&gt;“quick”&lt;/em&gt;, &lt;em&gt;“fox”&lt;/em&gt; and &lt;em&gt;“jumps”&lt;/em&gt; from &lt;em&gt;“brown”&lt;/em&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;######Word2Vec using Skip Gram model&lt;/p&gt;
+
+&lt;p&gt;For a given word( i.e. center word) we will try to predict surroundings words in a window of radius(say m).&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;######Equations and Figures&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;/*Lets us talk in mathematical equations. Suppose we T words, labeled as t=1,2..T.&lt;/p&gt;
+
+&lt;p&gt;For each word t belonging to T, we will calculate probability of occurrence of surrounding words in a radius of ‘m’.
+*/&lt;/p&gt;
+
+&lt;p&gt;We have our objective function something like this,&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;######More is yet to come&lt;/p&gt;
+
+&lt;hr /&gt;
+
+</content>
+ </entry>
+ 
+
+</feed>
