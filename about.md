@@ -1,18 +1,29 @@
 ---
 layout: page
-title: About me
+title: About Me
 ---
 
-> Hi!! The air of mystery will be cleared..
-> Stay tuned..
+> Hello World!! Its Anup here.. 
 
-<!-- I fell in love with all the crazy stuff that can be done using code. I mean code is something that gives you immense 
-power - power to make your presence felt - power to change the world. You could be sitting in one corner of the world 
-with your computer and still make stuff that can impact the whole world.
+I am a Software Developer, a Writer and Mathematics lover.
 
-Coming back to code, I tend to spend most of my time with `Python`, `Django`, `Swift` and related design patterns. In 
-my free time, I tend to hangout on StackOverflow and contribute to Open Source projects. And when I'm not into tech, I like to listen to Nirvana, Pink Floyd, Guns N' Roses and the likes.
+### Education
 
-To know more about me checkout my Github/StackOverflow profile. If you think, we have something in common, do ping me!
+* B.Tech, Computer Science Engineering
 
-Cheers! -->
+### Work Experience
+
+* Web Developer at  [Software Incubator](http://silive.in/)
+* Student Intern at [Truck Suvidha](http://trucksuvidha.com/)
+* Student Intern at My Own Space Research Consultancy 
+
+
+### Co-curricular Activities
+
+* 2nd Runner Up of Coding event conducted by Codechef Campus Chapter of college 
+* 5th Runner Up of Technical event - QuizUp conducted by IIT-D in Tyrst 2017
+* Winner of Techno-Managerial event - The Last Strike conducted by Technical Society of College
+* Winner of Anti-Ragging Poster Making Competition conducted by Cultural Society of College
+* I have a Personal non-techie [blog](https://anupkumarguptablog.wordpress.com/), do visit it too.
+
+You can find my [Resume](https://goo.gl/k0bHXf){:target="_blank"} here and if you find anything interesting to talk upon, do ping [me](mailto:contact@anupkumargupta.me).
