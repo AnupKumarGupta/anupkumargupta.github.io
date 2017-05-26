@@ -15,8 +15,8 @@
 <meta property="og:title" content="Word2Vector" />
 <meta name="description" content="This tutorial covers the skip gram neural network architecture for Word2Vec. We will cover, what are word vectors? What are different approaches to build a Word2Vec system ? Finally we dive deep and will try to build word2vec, the skip-gram model.." />
 <meta property="og:description" content="This tutorial covers the skip gram neural network architecture for Word2Vec. We will cover, what are word vectors? What are different approaches to build a Word2Vec system ? Finally we dive deep and will try to build word2vec, the skip-gram model.." />
-<link rel="canonical" href="http://localhost:4000//blog/Hello-World/" />
-<meta property="og:url" content="http://localhost:4000//blog/Hello-World/" />
+<link rel="canonical" href="http://localhost:4000//blog/Word2Vec/" />
+<meta property="og:url" content="http://localhost:4000//blog/Word2Vec/" />
 <meta property="og:site_name" content="Anup Kumar Gupta" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2017-04-28T00:00:00+05:30" />
@@ -26,7 +26,7 @@
 "headline": "Word2Vector",
 "datePublished": "2017-04-28T00:00:00+05:30",
 "description": "This tutorial covers the skip gram neural network architecture for Word2Vec. We will cover, what are word vectors? What are different approaches to build a Word2Vec system ? Finally we dive deep and will try to build word2vec, the skip-gram model..",
-"url": "http://localhost:4000//blog/Hello-World/"}</script>
+"url": "http://localhost:4000//blog/Word2Vec/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -143,9 +143,9 @@
 
 <p>I guess no. Lets explore some pitfalls of a naive approach to the classification problem.In many cases traditional text classification can be difficult to scale, because of the order of the vocabulary, which counts in the thousands or tens of thousands. In such a case applying a naive approach may not end up with desired results.</p>
 
-<p>Considering the above mentioned articles on cats. If we naively  try to find the words “kitty” or “kitten”, we may end up stating that the words are not all related to the article. Moreover this approach requires a great extent of human intervention.</p>
+<p>Let us consider the following example. Suppose we are an article and we have to check whether the article is about cats or not ? If we naively  try to find the word “cat” only, we may end up stating that the article is not at all related to the cats, even if we have words like “kitty” or “kitten” there in the article. Moreover this approach requires a great extent of human intervention.</p>
 
-<p>One solution to these problem is to move to Word2Vec for the processing of our unstructured text data. Word2Vec (W2V) is an algorithm that takes every word in our vocabulary and turns it into a unique vector that can be added, subtracted, and manipulated in ways just like a vector in space.</p>
+<p>One solution to these problem is to move to Word2Vec for the processing of our unstructured text data. Word2Vec is an algorithm that takes every word in our vocabulary and turns it into a unique vector that can be added, subtracted, and manipulated in ways just like a vector in space.</p>
 
 <p>Once these vectors are generated, they end up displaying very interesting relationships between one another. Since the vectors are mathematical entities, we can perform operations such as adding and subtraction on them. We can get amazing results by creating simple word vector equations such:</p>
 
@@ -182,7 +182,7 @@ man :   [0.1  0.3  1.0  0.3 ]
 
 <script type="math/tex; mode=display">P(context\mathbin{\vert} W_t > 0)</script>
 
-<p>where W_t is the center word. Our model will have a loss function.</p>
+<p>where $ W_t $ is the center word. Our model will have a loss function.</p>
 
 <script type="math/tex; mode=display">J = 1 - P( W_{-t} \mathbin{\vert} W_t  )</script>
 
@@ -199,15 +199,18 @@ man :   [0.1  0.3  1.0  0.3 ]
 
 <p>For example, if we have the sentence: <em>“The quick brown fox jumps”</em>, then CBOW tries to predict <em>“brown”</em> from <em>“the”</em>, <em>“quick”</em>, <em>“fox”</em> and <em>“jumps”</em>, while Skip-Gram tries to predict <em>“the”</em>, <em>“quick”</em>, <em>“fox”</em> and <em>“jumps”</em> from <em>“brown”</em>.</p>
 
-<hr />
-<p>######Word2Vec using Skip Gram model</p>
+<p>Let’s start to build our model using Skip Gram approach.</p>
 
-<p>For a given word( i.e. center word) we will try to predict surroundings words in a window of radius(say m).</p>
+<h3 id="word2vec-using-skip-gram-model">Word2Vec using Skip Gram model</h3>
 
-<hr />
-<p>######Equations and Figures</p>
+<p>For a given word $ \left ( i.e. center word \right ) $ we will try to predict surroundings words in a window of radius $ \left ( say m \right ) $.</p>
 
 <hr />
+
+<h3 id="equations-and-figures">Equations and Figures</h3>
+
+<hr />
+
 <p>/*Lets us talk in mathematical equations. Suppose we T words, labeled as t=1,2..T.</p>
 
 <p>For each word t belonging to T, we will calculate probability of occurrence of surrounding words in a radius of ‘m’.
@@ -216,7 +219,8 @@ man :   [0.1  0.3  1.0  0.3 ]
 <p>We have our objective function something like this,</p>
 
 <hr />
-<p>######More is yet to come</p>
+
+<h3 id="more-is-yet-to-come">More is yet to come</h3>
 
 <hr />
 
