@@ -4,13 +4,117 @@
  <title>Anup Kumar Gupta</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-05-26T21:09:38+05:30</updated>
+ <updated>2017-07-15T09:28:53+05:30</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Anup Kumar Gupta</name>
    <email>contact@anupkumargupta.me</email>
  </author>
 
+ 
+ <entry>
+   <title>HelloWorld Angular</title>
+   <link href="http://localhost:4000/blog/Hello-World-Angular/"/>
+   <updated>2017-07-15T00:00:00+05:30</updated>
+   <id>http://localhost:4000/blog/Hello World Angular</id>
+   <content type="html">&lt;h3 id=&quot;prerequisites&quot;&gt;Prerequisites:&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Setting up the Development Environment&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Angular requires node 6.9.x and npm 3.x.x for proper functioning.&lt;/li&gt;
+  &lt;li&gt;Check if you have &lt;code class=&quot;highlighter-rouge&quot;&gt;node&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;npm&lt;/code&gt; installed on your system. To do this, run the following commands in a terminal/console window.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For node:
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;
+ node -v
+&lt;/code&gt;
+ For npm:
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;
+ npm -v
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Install &lt;a href=&quot;https://nodejs.org/en/download/&quot;&gt;Node.js and npm&lt;/a&gt; if they are not already installed on your machine.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Install the &lt;a href=&quot;https://cli.angular.io/&quot;&gt;Angular CLI&lt;/a&gt;  globally using &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install -g @angular/cli&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;step-1-creating-a-new-project&quot;&gt;Step 1: Creating a new project&lt;/h3&gt;
+
+&lt;p&gt;Open a terminal window or Node.js command prompt if you are on Windows.&lt;/p&gt;
+
+&lt;p&gt;We create a new project and skeleton application using the command:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ng new my-app
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Here the &lt;code class=&quot;highlighter-rouge&quot;&gt;ng&lt;/code&gt; is for Angular.
+We get a file structure something like this.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://i.stack.imgur.com/0crAT.jpg&quot;&gt;&lt;img src=&quot;https://i.stack.imgur.com/0crAT.jpg&quot; alt=&quot;File Structure_1&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://i.stack.imgur.com/zEtsK.jpg&quot;&gt;&lt;img src=&quot;https://i.stack.imgur.com/zEtsK.jpg&quot; alt=&quot;File Structure_2&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;There are lots of files. We need not worry about all of them now.&lt;/p&gt;
+
+&lt;h3 id=&quot;step-2-serving-the-application&quot;&gt;Step 2: Serving the application&lt;/h3&gt;
+
+&lt;p&gt;We launch our application using following command:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ng serve
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We may use a flag &lt;code class=&quot;highlighter-rouge&quot;&gt;-open&lt;/code&gt;( or simply &lt;code class=&quot;highlighter-rouge&quot;&gt;-o&lt;/code&gt;) which will automatically open our browser on &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:4200/&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ng serve --open
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Navigate browser to the address &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:4200/&lt;/code&gt;. It looks something like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://i.stack.imgur.com/Ssupw.jpg&quot;&gt;&lt;img src=&quot;https://i.stack.imgur.com/Ssupw.jpg&quot; alt=&quot;Welcome To App&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;step-3-editing-our-first-angular-component&quot;&gt;Step 3: Editing our first Angular component&lt;/h3&gt;
+
+&lt;p&gt;The CLI created the default Angular component for us. This is the root component and it is named &lt;code class=&quot;highlighter-rouge&quot;&gt;app-root&lt;/code&gt;. One can find it in &lt;code class=&quot;highlighter-rouge&quot;&gt;./src/app/app.component.ts&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Open the component file and change the title property from &lt;code class=&quot;highlighter-rouge&quot;&gt;Welcome to app!!&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;Hello World&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Original Code : Notice the &lt;code class=&quot;highlighter-rouge&quot;&gt;title = 'app';&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://i.stack.imgur.com/fVVWw.jpg&quot;&gt;&lt;img src=&quot;https://i.stack.imgur.com/fVVWw.jpg&quot; alt=&quot;Original Code&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Modified Code : Value of &lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt; is changed.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://i.stack.imgur.com/ycTba.jpg&quot;&gt;&lt;img src=&quot;https://i.stack.imgur.com/ycTba.jpg&quot; alt=&quot;Modified Code&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Similarly there is a change in &lt;code class=&quot;highlighter-rouge&quot;&gt;./src/app/app.component.html&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Original HTML&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://i.stack.imgur.com/gwEFE.jpg&quot;&gt;&lt;img src=&quot;https://i.stack.imgur.com/gwEFE.jpg&quot; alt=&quot;enter image description here&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Modified HTML&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://i.stack.imgur.com/Sgpwj.jpg&quot;&gt;&lt;img src=&quot;https://i.stack.imgur.com/Sgpwj.jpg&quot; alt=&quot;enter image description here&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Notice that the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt; from the &lt;code class=&quot;highlighter-rouge&quot;&gt;./src/app/app.component.ts&lt;/code&gt; will be displayed. The browser reloads automatically when the changes are done. It looks something like this.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://i.stack.imgur.com/4MWP9.jpg&quot;&gt;&lt;img src=&quot;https://i.stack.imgur.com/4MWP9.jpg&quot; alt=&quot;Hello World&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;To find more on the topic, visit this link &lt;a href=&quot;https://angular.io/guide/quickstart#whats-next&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Word2Vector</title>
@@ -53,7 +157,7 @@ kitty : [0 0 0 1 ]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;A point worth noting is that no two vectors have 1 at same index. Also it’s clear that till now, there is no natural	notion of similarity in	a set of one-hot vectors. We aim that somehow, we modify these vectors such that, two words with a similar meaning have similar vectors. We will try to achieve something like this.&lt;/p&gt;
+&lt;p&gt;A point worth noting is that no two vectors have 1 at same index. Also it’s clear that till now, there is no natural notion of similarity in a set of one-hot vectors. We aim that somehow, we modify these vectors such that, two words with a similar meaning have similar vectors. We will try to achieve something like this.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cat :   [1.0  0.2  0.3  0.9 ]
 kitty : [0.9  0.1  0.1  1.0 ]
@@ -63,18 +167,9 @@ man :   [0.1  0.3  1.0  0.3 ]
 
 &lt;p&gt;We can now see that there is a sense of similarity between cat and kitty, but at the same time man differs from cat or kitty from a great distance.&lt;/p&gt;
 
-&lt;hr /&gt;
-&lt;p&gt;We will try to define a model that aims to predict the context words given a center word.&lt;/p&gt;
+&lt;p&gt;Now the question is, how to create these vectors from &lt;code class=&quot;highlighter-rouge&quot;&gt;one hot encoded vectors&lt;/code&gt;.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;P(context\mathbin{\vert} W_t &gt; 0)&lt;/script&gt;
-
-&lt;p&gt;where $ W_t $ is the center word. Our model will have a loss function.&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;J = 1 - P( W_{-t} \mathbin{\vert} W_t  )&lt;/script&gt;
-
-&lt;p&gt;Where $ W_{-t} $ are all the words except the center word. We try to put almost all words of the corpus as the center word $ W_t $ and perform operations such as to minimize the loss. We keep adjusting the vector representations of words so as to minimize this loss. The basic idea is to have a model that tries to predict from given input, calculates loss and then tries to minimize it. ( &lt;em&gt;Good Boy Model&lt;/em&gt;)&lt;/p&gt;
-
-&lt;p&gt;We have two brilliant ways to perform this task of minimizing the loss. There are two algorithms:&lt;/p&gt;
+&lt;p&gt;We have two algorithms to perform this task:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Continuous Bag of Words (CBOW)&lt;/li&gt;
@@ -86,6 +181,16 @@ man :   [0.1  0.3  1.0  0.3 ]
 &lt;p&gt;For example, if we have the sentence: &lt;em&gt;“The quick brown fox jumps”&lt;/em&gt;, then CBOW tries to predict &lt;em&gt;“brown”&lt;/em&gt; from &lt;em&gt;“the”&lt;/em&gt;, &lt;em&gt;“quick”&lt;/em&gt;, &lt;em&gt;“fox”&lt;/em&gt; and &lt;em&gt;“jumps”&lt;/em&gt;, while Skip-Gram tries to predict &lt;em&gt;“the”&lt;/em&gt;, &lt;em&gt;“quick”&lt;/em&gt;, &lt;em&gt;“fox”&lt;/em&gt; and &lt;em&gt;“jumps”&lt;/em&gt; from &lt;em&gt;“brown”&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;Let’s start to build our model using Skip Gram approach.&lt;/p&gt;
+
+&lt;p&gt;We will try to define a model that aims to predict the context words given a center word.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P(context\mathbin{\vert} W_t &gt; 0)&lt;/script&gt;
+
+&lt;p&gt;where $ W_t $ is the center word. Our model will have a loss function.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J = 1 - P( W_{-t} \mathbin{\vert} W_t  )&lt;/script&gt;
+
+&lt;p&gt;Where $ W_{-t} $ are all the words except the center word. We try to put almost all words of the corpus as the center word $ W_t $ and perform operations such as to minimize the loss. We keep adjusting the vector representations of words so as to minimize this loss. The basic idea is to have a model that tries to predict from given input, calculates loss and then tries to minimize it. ( &lt;em&gt;Good Boy Model&lt;/em&gt;)&lt;/p&gt;
 
 &lt;h3 id=&quot;word2vec-using-skip-gram-model&quot;&gt;Word2Vec using Skip Gram model&lt;/h3&gt;
 
