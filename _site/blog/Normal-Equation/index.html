@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <!-- SEO Tags -->
+  <!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>Normal Equation - Anup Kumar Gupta</title>
+<meta property="og:title" content="Normal Equation" />
+<meta name="description" content="A step by step guide for solving the problem of Multivariate Linear Regression, using the Normal Equations…" />
+<meta property="og:description" content="A step by step guide for solving the problem of Multivariate Linear Regression, using the Normal Equations…" />
+<link rel="canonical" href="http://localhost:4000//blog/Normal-Equation/" />
+<meta property="og:url" content="http://localhost:4000//blog/Normal-Equation/" />
+<meta property="og:site_name" content="Anup Kumar Gupta" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-08-08T00:00:00+05:30" />
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "BlogPosting",
+"headline": "Normal Equation",
+"datePublished": "2017-08-08T00:00:00+05:30",
+"description": "A step by step guide for solving the problem of Multivariate Linear Regression, using the Normal Equations…",
+"url": "http://localhost:4000//blog/Normal-Equation/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <title>
+    
+      Normal Equation &middot; Anup Kumar Gupta
+    
+  </title>
+
+  <!-- CSS 474588-->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/font-awesome-animations.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+       displayMath: [ ['$$', '$$'], ["\[", "\]"] ],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     }
+     //,
+     //displayAlign: "left",
+     //displayIndent: "2em"
+   });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+</head>
+
+
+  <body>
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+<p style="margin-left:30px">
+      <center>
+        <i class="fa fa-circle-o faa-burst animated magic-icon"></i></p>
+      </center>
+      <h1>
+        <a href="/">
+          Anup Kumar Gupta
+        </a>
+      </h1>
+      <p class="lead">Coder | Writer | Open Source Enthusiast</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <!-- <a class="sidebar-nav-item" href="/">Home</a> -->
+
+      
+      <a class="sidebar-nav-item" href="/projects/">Projects</a>
+
+      <a class="sidebar-nav-item" href="/about/">About</a>
+
+
+    </nav>
+
+
+        <ul class="list-inline" id="sidebar-buttons">
+            <li>
+                <a href="mailto:contact@anupkumargupta.me" class="btn-social btn-outline" title="E-Mail me">
+                    <i class="fa fa-fw fa-at"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/AnupKumarGupta" target="_blank" class="btn-social btn-outline" title="Say Hi AnupKumarGupta on GitHub">
+                    <i class="fa fa-fw fa-github"></i>
+                </a>
+            </li>
+
+            <li>
+               <a href="http://stackoverflow.com/users/6521550/anup-kumar-gupta" target="_blank" class="btn-social btn-outline" title="AnupKumarGupta on SO">
+                   <i class="fa fa-fw fa-stack-overflow"></i>
+               </a>
+           </li>
+            <li>
+                <a href="" target="_blank" class="btn-social btn-outline" title="Find me on LinkedIn">
+                    <i class="fa fa-fw fa-linkedin"></i>
+                </a>
+            </li>
+
+
+        </ul>
+    <p class="small">&copy; 2017.  <i class="fa fa-heart"></i> Peace <i class="fa fa-laptop"></i> </p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Normal Equation</h1>
+  <span class="post-date">08 Aug 2017</span>
+  <p>Hi guys. For the last couple of weeks I have been taking an awesome course on <code class="highlighter-rouge">Machine Learning</code>.</p>
+
+<p>** 
+I have to change this one
+ I was going through the topic <code class="highlighter-rouge">Multivariate Linear Regression</code> where the instructor presented an analytic solution <code class="highlighter-rouge">Normal Equation</code>.</p>
+
+<p>The derivation of the equation was not discussed, probably due to it was too mathematical. Blah blah…</p>
+
+<p>**</p>
+
+<p>Let’s us assume we are given the <code class="highlighter-rouge">hypothesis function</code> as:</p>
+
+<script type="math/tex; mode=display">h_{\theta}(x)=\theta_0x_0+\theta_1x_1+\cdots+\theta_nx_n</script>
+
+<p>where <script type="math/tex">\theta_0 , \theta_1, \cdots \theta_n</script> are the parameters and  <script type="math/tex">x_0 , x_1, \cdots x_n</script> are the features.</p>
+
+<p>We aim to minimize our <code class="highlighter-rouge">cost function</code> which is as follows:</p>
+
+<script type="math/tex; mode=display">J(\theta_{0...n})=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2</script>
+
+<p>where <script type="math/tex">x^{(i)}</script> is the <script type="math/tex">i^{th}</script> sample <script type="math/tex">(</script>from a set of m samples<script type="math/tex">)</script> and <script type="math/tex">y^{(i)}</script> is the <script type="math/tex">i^{th}</script> expected result.</p>
+
+<p>Let us consider the parameter vector as follows:</p>
+
+<script type="math/tex; mode=display">\theta = \begin{bmatrix} \theta_0\\ \theta_1\\ ...\\ \theta_n \end{bmatrix}</script>
+
+<p>Now the question arises why a matrix ? We have a system of linear equations here and these equations can easily handled by matrix algebra <script type="math/tex">(</script>or linear algebra<script type="math/tex">)</script>.</p>
+
+<p>Now we consider our feature vector as</p>
+
+<script type="math/tex; mode=display">x = \begin{bmatrix} 1\\ x_1\\ ...\\ x_n \end{bmatrix}</script>
+
+<p>where  <script type="math/tex">x_1</script>,  <script type="math/tex">x_2</script> up to <script type="math/tex">x_n</script> are <script type="math/tex">n</script> features. We have considered <script type="math/tex">x_0</script> as <script type="math/tex">1</script> for sake of easy calculations. Now intuitively we can say that, for a single feature vector we can write the <code class="highlighter-rouge">hypothesis function</code> as :
+<script type="math/tex">h_{\theta}(x)=\theta^Tx</script></p>
+
+<p>Recall that we have <script type="math/tex">m</script> <code class="highlighter-rouge">data samples</code> with us. Let us consider a matrix <script type="math/tex">(X)</script> with <script type="math/tex">m</script> rows, each representing a data sample and <script type="math/tex">n+1</script> columns. Now the <code class="highlighter-rouge">hypothesis function</code> can be re-written as 
+<script type="math/tex">h_{\theta}(x)=X\theta</script></p>
+
+<script type="math/tex; mode=display">J(\theta)=\frac{1}{2m}(X\theta-y)^T(X\theta-y)</script>
+
+<script type="math/tex; mode=display">J(\theta)=((X\theta)^T-y^T)(X\theta-y)</script>
+
+<script type="math/tex; mode=display">J(\theta)=(X\theta)^TX\theta-(X\theta)^Ty-y^T(X\theta)+y^Ty</script>
+
+</div>
+
+  
+
+
+
+<!-- <div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/blog/Hello-World-Angular/">
+            HelloWorld Angular
+            <small>15 Jul 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/blog/Word2Vec/">
+            Word2Vector
+            <small>28 Apr 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div> -->
+
+
+    </div>
+  </body>
+
+</html>

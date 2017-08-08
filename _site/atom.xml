@@ -4,13 +4,64 @@
  <title>Anup Kumar Gupta</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-07-15T09:28:53+05:30</updated>
+ <updated>2017-08-08T23:41:26+05:30</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Anup Kumar Gupta</name>
    <email>contact@anupkumargupta.me</email>
  </author>
 
+ 
+ <entry>
+   <title>Normal Equation</title>
+   <link href="http://localhost:4000/blog/Normal-Equation/"/>
+   <updated>2017-08-08T00:00:00+05:30</updated>
+   <id>http://localhost:4000/blog/Normal Equation</id>
+   <content type="html">&lt;p&gt;Hi guys. For the last couple of weeks I have been taking an awesome course on &lt;code class=&quot;highlighter-rouge&quot;&gt;Machine Learning&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;** 
+I have to change this one
+ I was going through the topic &lt;code class=&quot;highlighter-rouge&quot;&gt;Multivariate Linear Regression&lt;/code&gt; where the instructor presented an analytic solution &lt;code class=&quot;highlighter-rouge&quot;&gt;Normal Equation&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The derivation of the equation was not discussed, probably due to it was too mathematical. Blah blah…&lt;/p&gt;
+
+&lt;p&gt;**&lt;/p&gt;
+
+&lt;p&gt;Let’s us assume we are given the &lt;code class=&quot;highlighter-rouge&quot;&gt;hypothesis function&lt;/code&gt; as:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_{\theta}(x)=\theta_0x_0+\theta_1x_1+\cdots+\theta_nx_n&lt;/script&gt;
+
+&lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;\theta_0 , \theta_1, \cdots \theta_n&lt;/script&gt; are the parameters and  &lt;script type=&quot;math/tex&quot;&gt;x_0 , x_1, \cdots x_n&lt;/script&gt; are the features.&lt;/p&gt;
+
+&lt;p&gt;We aim to minimize our &lt;code class=&quot;highlighter-rouge&quot;&gt;cost function&lt;/code&gt; which is as follows:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta_{0...n})=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2&lt;/script&gt;
+
+&lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;x^{(i)}&lt;/script&gt; is the &lt;script type=&quot;math/tex&quot;&gt;i^{th}&lt;/script&gt; sample &lt;script type=&quot;math/tex&quot;&gt;(&lt;/script&gt;from a set of m samples&lt;script type=&quot;math/tex&quot;&gt;)&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;y^{(i)}&lt;/script&gt; is the &lt;script type=&quot;math/tex&quot;&gt;i^{th}&lt;/script&gt; expected result.&lt;/p&gt;
+
+&lt;p&gt;Let us consider the parameter vector as follows:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta = \begin{bmatrix} \theta_0\\ \theta_1\\ ...\\ \theta_n \end{bmatrix}&lt;/script&gt;
+
+&lt;p&gt;Now the question arises why a matrix ? We have a system of linear equations here and these equations can easily handled by matrix algebra &lt;script type=&quot;math/tex&quot;&gt;(&lt;/script&gt;or linear algebra&lt;script type=&quot;math/tex&quot;&gt;)&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now we consider our feature vector as&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;x = \begin{bmatrix} 1\\ x_1\\ ...\\ x_n \end{bmatrix}&lt;/script&gt;
+
+&lt;p&gt;where  &lt;script type=&quot;math/tex&quot;&gt;x_1&lt;/script&gt;,  &lt;script type=&quot;math/tex&quot;&gt;x_2&lt;/script&gt; up to &lt;script type=&quot;math/tex&quot;&gt;x_n&lt;/script&gt; are &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; features. We have considered &lt;script type=&quot;math/tex&quot;&gt;x_0&lt;/script&gt; as &lt;script type=&quot;math/tex&quot;&gt;1&lt;/script&gt; for sake of easy calculations. Now intuitively we can say that, for a single feature vector we can write the &lt;code class=&quot;highlighter-rouge&quot;&gt;hypothesis function&lt;/code&gt; as :
+&lt;script type=&quot;math/tex&quot;&gt;h_{\theta}(x)=\theta^Tx&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Recall that we have &lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;data samples&lt;/code&gt; with us. Let us consider a matrix &lt;script type=&quot;math/tex&quot;&gt;(X)&lt;/script&gt; with &lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt; rows, each representing a data sample and &lt;script type=&quot;math/tex&quot;&gt;n+1&lt;/script&gt; columns. Now the &lt;code class=&quot;highlighter-rouge&quot;&gt;hypothesis function&lt;/code&gt; can be re-written as 
+&lt;script type=&quot;math/tex&quot;&gt;h_{\theta}(x)=X\theta&lt;/script&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta)=\frac{1}{2m}(X\theta-y)^T(X\theta-y)&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta)=((X\theta)^T-y^T)(X\theta-y)&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta)=(X\theta)^TX\theta-(X\theta)^Ty-y^T(X\theta)+y^Ty&lt;/script&gt;
+</content>
+ </entry>
  
  <entry>
    <title>HelloWorld Angular</title>
