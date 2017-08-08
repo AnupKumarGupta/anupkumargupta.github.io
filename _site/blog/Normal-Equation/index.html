@@ -163,17 +163,38 @@ I have to change this one
 
 <script type="math/tex; mode=display">x = \begin{bmatrix} 1\\ x_1\\ ...\\ x_n \end{bmatrix}</script>
 
-<p>where  <script type="math/tex">x_1</script>,  <script type="math/tex">x_2</script> up to <script type="math/tex">x_n</script> are <script type="math/tex">n</script> features. We have considered <script type="math/tex">x_0</script> as <script type="math/tex">1</script> for sake of easy calculations. Now intuitively we can say that, for a single feature vector we can write the <code class="highlighter-rouge">hypothesis function</code> as :
+<p>where  <script type="math/tex">x_1</script>,  <script type="math/tex">x_2</script> up to <script type="math/tex">x_n</script> are <script type="math/tex">n</script> features. We have considered <script type="math/tex">x_0</script> as <script type="math/tex">1</script> for sake of easy calculations. Now intuitively we can say that, for a single feature vector we can write the <code class="highlighter-rouge">hypothesis function</code> as
 <script type="math/tex">h_{\theta}(x)=\theta^Tx</script></p>
 
 <p>Recall that we have <script type="math/tex">m</script> <code class="highlighter-rouge">data samples</code> with us. Let us consider a matrix <script type="math/tex">(X)</script> with <script type="math/tex">m</script> rows, each representing a data sample and <script type="math/tex">n+1</script> columns. Now the <code class="highlighter-rouge">hypothesis function</code> can be re-written as 
 <script type="math/tex">h_{\theta}(x)=X\theta</script></p>
 
+<p>With this, we can rewrite the <code class="highlighter-rouge">least-squares cost function</code> as following, replacing the sum by matrix multiplication:</p>
+
 <script type="math/tex; mode=display">J(\theta)=\frac{1}{2m}(X\theta-y)^T(X\theta-y)</script>
+
+<p>Let us get rid of <script type="math/tex">\frac{1}{2m}</script>  term, as it plays no role when the derivative is compared to zero.</p>
+
+<script type="math/tex; mode=display">J(\theta)=(X\theta-y)^T(X\theta-y)</script>
+
+<p>We now apply the following transpose identity <script type="math/tex">(A-B)^T = (A^T-B^T)</script> and get the following equation.</p>
 
 <script type="math/tex; mode=display">J(\theta)=((X\theta)^T-y^T)(X\theta-y)</script>
 
+<p>Further solving the equation,we get:</p>
+
 <script type="math/tex; mode=display">J(\theta)=(X\theta)^TX\theta-(X\theta)^Ty-y^T(X\theta)+y^Ty</script>
+
+<p>Now again applying the following identity <script type="math/tex">(A*B)^T = (B^T*A^T)</script> , we can rewrite the equation as given below.</p>
+
+<script type="math/tex; mode=display">J(\theta)=(\theta^TX^T)X\theta-(X\theta)^Ty-y^T(X\theta)+y^Ty</script>
+
+<p>Now one can easily show that <script type="math/tex">(X\theta)^Ty=y^T(X\theta)</script> and hence we get our final <code class="highlighter-rouge">least-squares cost function</code> is:</p>
+
+<script type="math/tex; mode=display">J(\theta)=\theta^TX^TX\theta-2(X\theta)^Ty+y^Ty</script>
+
+<p>We know that the above function has a minimum value for the <script type="math/tex">\theta</script> at which  <script type="math/tex">\frac{\partial J}{\partial \theta}= 0</script></p>
+
 
 </div>
 

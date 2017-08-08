@@ -4,7 +4,7 @@
  <title>Anup Kumar Gupta</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-08-08T23:41:26+05:30</updated>
+ <updated>2017-08-09T00:00:43+05:30</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Anup Kumar Gupta</name>
@@ -49,17 +49,38 @@ I have to change this one
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;x = \begin{bmatrix} 1\\ x_1\\ ...\\ x_n \end{bmatrix}&lt;/script&gt;
 
-&lt;p&gt;where  &lt;script type=&quot;math/tex&quot;&gt;x_1&lt;/script&gt;,  &lt;script type=&quot;math/tex&quot;&gt;x_2&lt;/script&gt; up to &lt;script type=&quot;math/tex&quot;&gt;x_n&lt;/script&gt; are &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; features. We have considered &lt;script type=&quot;math/tex&quot;&gt;x_0&lt;/script&gt; as &lt;script type=&quot;math/tex&quot;&gt;1&lt;/script&gt; for sake of easy calculations. Now intuitively we can say that, for a single feature vector we can write the &lt;code class=&quot;highlighter-rouge&quot;&gt;hypothesis function&lt;/code&gt; as :
+&lt;p&gt;where  &lt;script type=&quot;math/tex&quot;&gt;x_1&lt;/script&gt;,  &lt;script type=&quot;math/tex&quot;&gt;x_2&lt;/script&gt; up to &lt;script type=&quot;math/tex&quot;&gt;x_n&lt;/script&gt; are &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; features. We have considered &lt;script type=&quot;math/tex&quot;&gt;x_0&lt;/script&gt; as &lt;script type=&quot;math/tex&quot;&gt;1&lt;/script&gt; for sake of easy calculations. Now intuitively we can say that, for a single feature vector we can write the &lt;code class=&quot;highlighter-rouge&quot;&gt;hypothesis function&lt;/code&gt; as
 &lt;script type=&quot;math/tex&quot;&gt;h_{\theta}(x)=\theta^Tx&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;Recall that we have &lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;data samples&lt;/code&gt; with us. Let us consider a matrix &lt;script type=&quot;math/tex&quot;&gt;(X)&lt;/script&gt; with &lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt; rows, each representing a data sample and &lt;script type=&quot;math/tex&quot;&gt;n+1&lt;/script&gt; columns. Now the &lt;code class=&quot;highlighter-rouge&quot;&gt;hypothesis function&lt;/code&gt; can be re-written as 
 &lt;script type=&quot;math/tex&quot;&gt;h_{\theta}(x)=X\theta&lt;/script&gt;&lt;/p&gt;
 
+&lt;p&gt;With this, we can rewrite the &lt;code class=&quot;highlighter-rouge&quot;&gt;least-squares cost function&lt;/code&gt; as following, replacing the sum by matrix multiplication:&lt;/p&gt;
+
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta)=\frac{1}{2m}(X\theta-y)^T(X\theta-y)&lt;/script&gt;
+
+&lt;p&gt;Let us get rid of &lt;script type=&quot;math/tex&quot;&gt;\frac{1}{2m}&lt;/script&gt;  term, as it plays no role when the derivative is compared to zero.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta)=(X\theta-y)^T(X\theta-y)&lt;/script&gt;
+
+&lt;p&gt;We now apply the following transpose identity &lt;script type=&quot;math/tex&quot;&gt;(A-B)^T = (A^T-B^T)&lt;/script&gt; and get the following equation.&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta)=((X\theta)^T-y^T)(X\theta-y)&lt;/script&gt;
 
+&lt;p&gt;Further solving the equation,we get:&lt;/p&gt;
+
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta)=(X\theta)^TX\theta-(X\theta)^Ty-y^T(X\theta)+y^Ty&lt;/script&gt;
+
+&lt;p&gt;Now again applying the following identity &lt;script type=&quot;math/tex&quot;&gt;(A*B)^T = (B^T*A^T)&lt;/script&gt; , we can rewrite the equation as given below.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta)=(\theta^TX^T)X\theta-(X\theta)^Ty-y^T(X\theta)+y^Ty&lt;/script&gt;
+
+&lt;p&gt;Now one can easily show that &lt;script type=&quot;math/tex&quot;&gt;(X\theta)^Ty=y^T(X\theta)&lt;/script&gt; and hence we get our final &lt;code class=&quot;highlighter-rouge&quot;&gt;least-squares cost function&lt;/code&gt; is:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta)=\theta^TX^TX\theta-2(X\theta)^Ty+y^Ty&lt;/script&gt;
+
+&lt;p&gt;We know that the above function has a minimum value for the &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt; at which  &lt;script type=&quot;math/tex&quot;&gt;\frac{\partial J}{\partial \theta}= 0&lt;/script&gt;&lt;/p&gt;
+
 </content>
  </entry>
  

@@ -36,14 +36,36 @@ Now we consider our feature vector as
 
 $$x = \begin{bmatrix} 1\\ x_1\\ ...\\ x_n \end{bmatrix}$$ 
 
-where  $$x_1$$,  $$x_2$$ up to $$x_n$$ are $$n$$ features. We have considered $$x_0$$ as $$1$$ for sake of easy calculations. Now intuitively we can say that, for a single feature vector we can write the `hypothesis function` as :
+where  $$x_1$$,  $$x_2$$ up to $$x_n$$ are $$n$$ features. We have considered $$x_0$$ as $$1$$ for sake of easy calculations. Now intuitively we can say that, for a single feature vector we can write the `hypothesis function` as
 $$h_{\theta}(x)=\theta^Tx$$ 
 
 Recall that we have $$m$$ `data samples` with us. Let us consider a matrix $$(X)$$ with $$m$$ rows, each representing a data sample and $$n+1$$ columns. Now the `hypothesis function` can be re-written as 
 $$h_{\theta}(x)=X\theta$$ 
 
+With this, we can rewrite the `least-squares cost function` as following, replacing the sum by matrix multiplication:
+
 $$J(\theta)=\frac{1}{2m}(X\theta-y)^T(X\theta-y)$$
+
+Let us get rid of $$\frac{1}{2m}$$  term, as it plays no role when the derivative is compared to zero.
+
+$$J(\theta)=(X\theta-y)^T(X\theta-y)$$
+
+We now apply the following transpose identity $$(A-B)^T = (A^T-B^T)$$ and get the following equation.
 
 $$J(\theta)=((X\theta)^T-y^T)(X\theta-y)$$
 
+Further solving the equation,we get:
+
 $$J(\theta)=(X\theta)^TX\theta-(X\theta)^Ty-y^T(X\theta)+y^Ty$$
+
+Now again applying the following identity $$(A*B)^T = (B^T*A^T)$$ , we can rewrite the equation as given below.  
+
+$$J(\theta)=(\theta^TX^T)X\theta-(X\theta)^Ty-y^T(X\theta)+y^Ty$$
+
+Now one can easily show that $$(X\theta)^Ty=y^T(X\theta)$$ and hence we get our final `least-squares cost function` is: 
+
+$$J(\theta)=\theta^TX^TX\theta-2(X\theta)^Ty+y^Ty$$
+
+We know that the above function has a minimum value for the $$\theta$$ at which  $$\frac{\partial J}{\partial \theta}= 0 $$
+
+
