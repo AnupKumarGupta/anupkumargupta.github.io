@@ -195,6 +195,27 @@ I have to change this one
 
 <p>We know that the above function has a minimum value for the <script type="math/tex">\theta</script> at which  <script type="math/tex">\frac{\partial J}{\partial \theta}= 0</script></p>
 
+<p>Let us now breakdown the above equation of  <code class="highlighter-rouge">least-squares cost function</code> in two parts<script type="math/tex">, P</script> and <script type="math/tex">Q</script> such that:</p>
+
+<script type="math/tex; mode=display">P = (\theta^TX^T)X\theta</script>
+
+<script type="math/tex; mode=display">Q = 2(X\theta)^Ty</script>
+
+<p>Notice that the third term <script type="math/tex">y^Ty</script> can be skipped as its constant wrt <script type="math/tex">\theta</script>. Let us solve <script type="math/tex">P</script> and <script type="math/tex">Q</script> separately and merge the solution to get the results.</p>
+
+<p>The result is:</p>
+
+<script type="math/tex; mode=display">\frac{\partial J}{\partial \theta}=2X^TX\theta-2X^{T}y=0</script>
+
+<p>Or:</p>
+
+<script type="math/tex; mode=display">X^TX\theta=X^{T}y</script>
+
+<p>Assuming that the matrix <script type="math/tex">X^TX</script> is invertible(non-singular), we can multiply both sides by <script type="math/tex">(X^TX)^{-1}</script> and get our solution as:</p>
+
+<script type="math/tex; mode=display">\theta=(X^TX)^{-1}X^Ty</script>
+
+<p>which is the  ` Normal Equation for Linear Regression`.</p>
 
 </div>
 

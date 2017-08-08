@@ -4,7 +4,7 @@
  <title>Anup Kumar Gupta</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-08-09T00:00:43+05:30</updated>
+ <updated>2017-08-09T00:11:58+05:30</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Anup Kumar Gupta</name>
@@ -81,6 +81,27 @@ I have to change this one
 
 &lt;p&gt;We know that the above function has a minimum value for the &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt; at which  &lt;script type=&quot;math/tex&quot;&gt;\frac{\partial J}{\partial \theta}= 0&lt;/script&gt;&lt;/p&gt;
 
+&lt;p&gt;Let us now breakdown the above equation of  &lt;code class=&quot;highlighter-rouge&quot;&gt;least-squares cost function&lt;/code&gt; in two parts&lt;script type=&quot;math/tex&quot;&gt;, P&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt; such that:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P = (\theta^TX^T)X\theta&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Q = 2(X\theta)^Ty&lt;/script&gt;
+
+&lt;p&gt;Notice that the third term &lt;script type=&quot;math/tex&quot;&gt;y^Ty&lt;/script&gt; can be skipped as its constant wrt &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;. Let us solve &lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt; separately and merge the solution to get the results.&lt;/p&gt;
+
+&lt;p&gt;The result is:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\partial J}{\partial \theta}=2X^TX\theta-2X^{T}y=0&lt;/script&gt;
+
+&lt;p&gt;Or:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;X^TX\theta=X^{T}y&lt;/script&gt;
+
+&lt;p&gt;Assuming that the matrix &lt;script type=&quot;math/tex&quot;&gt;X^TX&lt;/script&gt; is invertible(non-singular), we can multiply both sides by &lt;script type=&quot;math/tex&quot;&gt;(X^TX)^{-1}&lt;/script&gt; and get our solution as:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta=(X^TX)^{-1}X^Ty&lt;/script&gt;
+
+&lt;p&gt;which is the  ` Normal Equation for Linear Regression`.&lt;/p&gt;
 </content>
  </entry>
  

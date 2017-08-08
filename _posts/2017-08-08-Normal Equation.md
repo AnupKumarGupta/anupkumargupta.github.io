@@ -68,4 +68,25 @@ $$J(\theta)=\theta^TX^TX\theta-2(X\theta)^Ty+y^Ty$$
 
 We know that the above function has a minimum value for the $$\theta$$ at which  $$\frac{\partial J}{\partial \theta}= 0 $$
 
+Let us now breakdown the above equation of  `least-squares cost function` in two parts$$, P $$ and $$Q$$ such that:
 
+$$ P = (\theta^TX^T)X\theta $$ 
+
+$$ Q = 2(X\theta)^Ty $$ 
+
+Notice that the third term $$y^Ty$$ can be skipped as its constant wrt $$\theta$$. Let us solve $$P$$ and $$Q$$ separately and merge the solution to get the results.
+
+
+The result is:
+
+$$\frac{\partial J}{\partial \theta}=2X^TX\theta-2X^{T}y=0$$
+
+Or:
+
+$$X^TX\theta=X^{T}y$$
+
+Assuming that the matrix $$X^TX$$ is invertible(non-singular), we can multiply both sides by $$(X^TX)^{-1}$$ and get our solution as:
+
+$$\theta=(X^TX)^{-1}X^Ty$$
+
+which is the  ` Normal Equation for Linear Regression`.
