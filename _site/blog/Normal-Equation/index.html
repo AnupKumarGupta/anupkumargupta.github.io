@@ -203,6 +203,27 @@ I have to change this one
 
 <p>Notice that the third term <script type="math/tex">y^Ty</script> can be skipped as its constant wrt <script type="math/tex">\theta</script>. Let us solve <script type="math/tex">P</script> and <script type="math/tex">Q</script> separately and merge the solution to get the results.</p>
 
+<hr />
+<p>Derive P here</p>
+
+<hr />
+
+<script type="math/tex; mode=display">Q(\theta)=2(X\theta)^Ty</script>
+
+<script type="math/tex; mode=display">Q(\theta)=2\begin{bmatrix} \begin{bmatrix} x_{11}  x_{12}  ...  x_{1n}\\x_{21}  x_{22}  ...  x_{2n}\\ ...\\ x_{m1}  ...  ...  x_{mn}\\ \end{bmatrix}\begin{bmatrix} \theta_1\\ \theta_2\\ ...\\ \theta_n\\ \end{bmatrix} \end{bmatrix}^T\begin{bmatrix} y_1\\ y_2\\ ...\\ y_m\\ \end{bmatrix}</script>
+
+<p>Or:</p>
+
+<script type="math/tex; mode=display">Q(x)=2\begin{bmatrix} x_{11}\theta_1+...+x_{1n}\theta_n\\x_{21}\theta_1+...+x_{2n}\theta_n\\ ...\\ x_{m1}\theta_1+...+x_{mn}\theta_n \end{bmatrix}^T\begin{bmatrix} y_1\\ y_2\\ ...\\ y_m\\ \end{bmatrix}</script>
+
+<p>Or:</p>
+
+<script type="math/tex; mode=display">Q(x)=2(x_{11}\theta_1+...+x_{1n}\theta_n)y_1+2(x_{21}\theta_1+...+x_{2n}\theta_n)y_2+...+2(x_{m1}\theta_1+...+x_{mn}\theta_n)y_m</script>
+
+<script type="math/tex; mode=display">\begin{matrix} \frac{\partial P}{\partial \theta_1}=2(x_{11}y_1+x_{21}y_1+...+x_{m1}y_m) \end{matrix}</script>
+
+<hr />
+
 <p>The result is:</p>
 
 <script type="math/tex; mode=display">\frac{\partial J}{\partial \theta}=2X^TX\theta-2X^{T}y=0</script>

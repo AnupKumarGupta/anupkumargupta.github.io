@@ -76,6 +76,28 @@ $$ Q = 2(X\theta)^Ty $$
 
 Notice that the third term $$y^Ty$$ can be skipped as its constant wrt $$\theta$$. Let us solve $$P$$ and $$Q$$ separately and merge the solution to get the results.
 
+-------
+Derive P here
+
+-------
+
+$$Q(\theta)=2(X\theta)^Ty$$
+
+$$Q(\theta)=2\begin{bmatrix} \begin{bmatrix} x_{11}  x_{12}  ...  x_{1n}\\x_{21}  x_{22}  ...  x_{2n}\\ ...\\ x_{m1}  ...  ...  x_{mn}\\ \end{bmatrix}\begin{bmatrix} \theta_1\\ \theta_2\\ ...\\ \theta_n\\ \end{bmatrix} \end{bmatrix}^T\begin{bmatrix} y_1\\ y_2\\ ...\\ y_m\\ \end{bmatrix}$$
+
+Or:
+
+$$Q(x)=2\begin{bmatrix} x_{11}\theta_1+...+x_{1n}\theta_n\\x_{21}\theta_1+...+x_{2n}\theta_n\\ ...\\ x_{m1}\theta_1+...+x_{mn}\theta_n \end{bmatrix}^T\begin{bmatrix} y_1\\ y_2\\ ...\\ y_m\\ \end{bmatrix}$$
+
+Or:
+
+$$ Q(x)=2(x_{11}\theta_1+...+x_{1n}\theta_n)y_1+2(x_{21}\theta_1+...+x_{2n}\theta_n)y_2+...+2(x_{m1}\theta_1+...+x_{mn}\theta_n)y_m$$
+
+
+$$\begin{matrix} \frac{\partial P}{\partial \theta_1}=2(x_{11}y_1+x_{21}y_1+...+x_{m1}y_m) \end{matrix}
+$$
+
+-----
 
 The result is:
 
