@@ -4,7 +4,7 @@
  <title>Anup Kumar Gupta</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-08-09T23:15:51+05:30</updated>
+ <updated>2017-08-09T23:24:22+05:30</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Anup Kumar Gupta</name>
@@ -13,19 +13,11 @@
 
  
  <entry>
-   <title>Normal Equation</title>
+   <title>Normal Equation for Linear Regression</title>
    <link href="http://localhost:4000/blog/Normal-Equation/"/>
    <updated>2017-08-08T00:00:00+05:30</updated>
    <id>http://localhost:4000/blog/Normal Equation</id>
-   <content type="html">&lt;p&gt;Hi guys. For the last couple of weeks I have been taking an awesome course on &lt;code class=&quot;highlighter-rouge&quot;&gt;Machine Learning&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;** 
-I have to change this one
- I was going through the topic &lt;code class=&quot;highlighter-rouge&quot;&gt;Multivariate Linear Regression&lt;/code&gt; where the instructor presented an analytic solution &lt;code class=&quot;highlighter-rouge&quot;&gt;Normal Equation&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;The derivation of the equation was not discussed, probably due to it was too mathematical. Blah blah…&lt;/p&gt;
-
-&lt;p&gt;**&lt;/p&gt;
+   <content type="html">&lt;p&gt;Hi guys. For the last couple of weeks I have been taking an awesome course on &lt;code class=&quot;highlighter-rouge&quot;&gt;Machine Learning&lt;/code&gt;.  I was going through the topic &lt;code class=&quot;highlighter-rouge&quot;&gt;Multivariate Linear Regression&lt;/code&gt; in which I was introduced &lt;code class=&quot;highlighter-rouge&quot;&gt;Normal Equation&lt;/code&gt;. The instructor presented the equation, but the derivation was left out for some reasons. I managed to perform a step-by-step derivation and I am sharing it with you. Let’s get started&lt;/p&gt;
 
 &lt;p&gt;Let’s us assume we are given the &lt;code class=&quot;highlighter-rouge&quot;&gt;hypothesis function&lt;/code&gt; as:&lt;/p&gt;
 
