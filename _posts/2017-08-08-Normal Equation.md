@@ -93,13 +93,22 @@ Or:
 
 $$ Q(x)=2(x_{11}\theta_1+...+x_{1n}\theta_n)y_1+2(x_{21}\theta_1+...+x_{2n}\theta_n)y_2+...+2(x_{m1}\theta_1+...+x_{mn}\theta_n)y_m$$
 
+Now we have to calculate its derivation wrt to $$\theta$$ Below we have partial derivative of above equation wrt to $$\theta_1$$ 
 
-$$\begin{matrix} \frac{\partial P}{\partial \theta_1}=2(x_{11}y_1+x_{21}y_1+...+x_{m1}y_m) \end{matrix}
-$$
+$$\frac{\partial Q}{\partial \theta_1}=2(x_{11}y_1+x_{21}y_2+...+x_{m1}y_m)$$
 
------
+One can easily calculate the other partial derivatives similarly. After solving the derivative we have following expression:
 
-The result is:
+$$\frac{\partial Q}{\partial \theta} = 2\begin{bmatrix} x_{11}+...+x_{1n}\\x_{21}+...+x_{2n}\\ ...\\ x_{m1}+...+x_{mn} \end{bmatrix}^T\begin{bmatrix} y_1\\ y_2\\ ...\\ y_m\\ \end{bmatrix}$$
+
+Or
+
+
+$$\frac{\partial Q}{\partial \theta}=2X^Ty$$
+
+Recall that for convenience we broke $$J$$ up into three parts$$: P $$, $$ Q $$ and $$y^Ty$$, where third term was skipped.
+
+The equation after combining the results of first two parts is:
 
 $$\frac{\partial J}{\partial \theta}=2X^TX\theta-2X^{T}y=0$$
 

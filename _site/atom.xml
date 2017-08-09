@@ -4,7 +4,7 @@
  <title>Anup Kumar Gupta</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-08-09T10:47:21+05:30</updated>
+ <updated>2017-08-09T21:12:12+05:30</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Anup Kumar Gupta</name>
@@ -106,11 +106,21 @@ I have to change this one
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;Q(x)=2(x_{11}\theta_1+...+x_{1n}\theta_n)y_1+2(x_{21}\theta_1+...+x_{2n}\theta_n)y_2+...+2(x_{m1}\theta_1+...+x_{mn}\theta_n)y_m&lt;/script&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{matrix} \frac{\partial P}{\partial \theta_1}=2(x_{11}y_1+x_{21}y_1+...+x_{m1}y_m) \end{matrix}&lt;/script&gt;
+&lt;p&gt;Now we have to calculate its derivation wrt to &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt; Below we have partial derivative of above equation wrt to &lt;script type=&quot;math/tex&quot;&gt;\theta_1&lt;/script&gt;&lt;/p&gt;
 
-&lt;hr /&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\partial Q}{\partial \theta_1}=2(x_{11}y_1+x_{21}y_2+...+x_{m1}y_m)&lt;/script&gt;
 
-&lt;p&gt;The result is:&lt;/p&gt;
+&lt;p&gt;One can easily calculate the other partial derivatives similarly. After solving the derivative we have following expression:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\partial Q}{\partial \theta} = 2\begin{bmatrix} x_{11}+...+x_{1n}\\x_{21}+...+x_{2n}\\ ...\\ x_{m1}+...+x_{mn} \end{bmatrix}^T\begin{bmatrix} y_1\\ y_2\\ ...\\ y_m\\ \end{bmatrix}&lt;/script&gt;
+
+&lt;p&gt;Or&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\partial Q}{\partial \theta}=2X^Ty&lt;/script&gt;
+
+&lt;p&gt;Recall that for convenience we broke &lt;script type=&quot;math/tex&quot;&gt;J&lt;/script&gt; up into three parts&lt;script type=&quot;math/tex&quot;&gt;: P&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;y^Ty&lt;/script&gt;, where third term was skipped.&lt;/p&gt;
+
+&lt;p&gt;The equation after combining the results of first two parts is:&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\partial J}{\partial \theta}=2X^TX\theta-2X^{T}y=0&lt;/script&gt;
 
