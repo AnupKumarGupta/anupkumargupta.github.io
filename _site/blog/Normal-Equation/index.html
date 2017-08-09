@@ -201,12 +201,41 @@ I have to change this one
 
 <script type="math/tex; mode=display">Q = 2(X\theta)^Ty</script>
 
-<p>Notice that the third term <script type="math/tex">y^Ty</script> can be skipped as its constant wrt <script type="math/tex">\theta</script>. Let us solve <script type="math/tex">P</script> and <script type="math/tex">Q</script> separately and merge the solution to get the results.</p>
+<p>Notice that the third term <script type="math/tex">y^Ty</script> can be skipped as its constant wrt <script type="math/tex">\theta</script>. Let us solve <script type="math/tex">P , Q</script> separately and merge the solution to get the results.</p>
 
-<hr />
-<p>Derive P here</p>
+<p>Let us start with the first part:</p>
 
-<hr />
+<script type="math/tex; mode=display">P(\theta)=\theta^TX^TX\theta</script>
+
+<p>Let us write down the equation in form of matrices:</p>
+
+<script type="math/tex; mode=display">P(\theta)=\begin{bmatrix}\theta_1...\theta_n\end{bmatrix}\begin{bmatrix}x_{11}  x_{21}  ...  x_{m1}\\ x_{12}  x_{22}  ...  x_{m2}\\ ...\\ x_{1n}  x_{2n}  ...  x_{mn}\\ \end{bmatrix}\begin{bmatrix}x_{11}  x_{12}  ...  x_{1n}\\ x_{21}  x_{22}  ...  x_{2n}\\ ...\\ x_{m1}  x_{m2}  ...  x_{mn}\\ \end{bmatrix}\begin{bmatrix} \theta_1\\ \theta_2\\ ...\\ \theta_n\\ \end{bmatrix}</script>
+
+<p>Or</p>
+
+<script type="math/tex; mode=display">P(\theta)=\begin{bmatrix}\theta_1...\theta_n\end{bmatrix}\begin{bmatrix}x_{11}^2  x_{21}^2  ...  x_{m1}^2\\ x_{12}^2  x_{22}^2  ...  x_{m2}^2\\ ...\\ x_{1n}^2  x_{2n}^2  ...  x_{mn}^2\\ \end{bmatrix}\begin{bmatrix} \theta_1\\ \theta_2\\ ...\\ \theta_n\\ \end{bmatrix}</script>
+
+<p>Or</p>
+
+<script type="math/tex; mode=display">P(\theta)= \begin{bmatrix} \theta_1...\theta_n \end{bmatrix} \begin{bmatrix}x^{2}_{11}\theta_1+...+x^{2}_{1n}\theta_n\\ x^{2}_{21}\theta_1+...+x^{2}_{2n}\theta_n\\ ...\\ x^{2}_{n1}\theta_1+...+x^{2}_{nn}\theta_n\end{bmatrix}</script>
+
+<p>Or</p>
+
+<script type="math/tex; mode=display">P(\theta)=\theta_1(x^{2}_{11}\theta_1+...+x^{2}_{1n}\theta_n)+\theta_2(x^{2}_{21}\theta_1+...+x^{2}_{2n}\theta_n)+...+\theta_n(x^{2}_{n1}\theta_1+...+x^{2}_{nn}\theta_n)</script>
+
+<p>Let’s consider the <script type="math/tex">\frac{\partial P}{\partial \theta_1}</script>, from which we can intuitively calculate the rest:</p>
+
+<script type="math/tex; mode=display">\frac{\partial P}{\partial \theta_1}=(2\theta_1X^{2}_{11}+\theta_2X^{2}_{12}+...+\theta_nX^{2}_{1n})+\theta_2X^{2}_{21}+...+\theta_nX^{2}_{n1}</script>
+
+<p>We know that <script type="math/tex">X^{2}_{12}=X^{2}_{21}</script> and so on. Hence we can rewrite our equation as:</p>
+
+<script type="math/tex; mode=display">\frac{\partial P}{\partial \theta_1}=2\theta_1X^{2}_{11}+2\theta_2X^{2}_{12}+...+2\theta_nX^{2}_{1n}</script>
+
+<p>The partial derivatives by <script type="math/tex">\theta_2,\theta_3 ...\theta_n</script>  are similar. Collecting the sequence of partial derivatives back into a vector equation, we get:</p>
+
+<script type="math/tex; mode=display">\frac{\partial P}{\partial \theta}=2X^2\theta=2X^TX\theta</script>
+
+<p>Now lets go for <script type="math/tex">Q</script></p>
 
 <script type="math/tex; mode=display">Q(\theta)=2(X\theta)^Ty</script>
 
@@ -246,7 +275,7 @@ I have to change this one
 
 <script type="math/tex; mode=display">\theta=(X^TX)^{-1}X^Ty</script>
 
-<p>which is the  ` Normal Equation for Linear Regression`.</p>
+<p>which is the  <code class="highlighter-rouge">Normal Equation for Linear Regression</code>.</p>
 
 </div>
 

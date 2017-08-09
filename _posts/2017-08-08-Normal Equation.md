@@ -74,12 +74,44 @@ $$ P = (\theta^TX^T)X\theta $$
 
 $$ Q = 2(X\theta)^Ty $$ 
 
-Notice that the third term $$y^Ty$$ can be skipped as its constant wrt $$\theta$$. Let us solve $$P$$ and $$Q$$ separately and merge the solution to get the results.
+Notice that the third term $$y^Ty$$ can be skipped as its constant wrt $$\theta$$. Let us solve $$ P , Q$$ separately and merge the solution to get the results.
 
--------
-Derive P here
+Let us start with the first part:
 
--------
+
+$$ P(\theta)=\theta^TX^TX\theta$$
+
+Let us write down the equation in form of matrices:
+
+$$P(\theta)=\begin{bmatrix}\theta_1...\theta_n\end{bmatrix}\begin{bmatrix}x_{11}  x_{21}  ...  x_{m1}\\ x_{12}  x_{22}  ...  x_{m2}\\ ...\\ x_{1n}  x_{2n}  ...  x_{mn}\\ \end{bmatrix}\begin{bmatrix}x_{11}  x_{12}  ...  x_{1n}\\ x_{21}  x_{22}  ...  x_{2n}\\ ...\\ x_{m1}  x_{m2}  ...  x_{mn}\\ \end{bmatrix}\begin{bmatrix} \theta_1\\ \theta_2\\ ...\\ \theta_n\\ \end{bmatrix}$$
+
+Or
+
+$$P(\theta)=\begin{bmatrix}\theta_1...\theta_n\end{bmatrix}\begin{bmatrix}x_{11}^2  x_{21}^2  ...  x_{m1}^2\\ x_{12}^2  x_{22}^2  ...  x_{m2}^2\\ ...\\ x_{1n}^2  x_{2n}^2  ...  x_{mn}^2\\ \end{bmatrix}\begin{bmatrix} \theta_1\\ \theta_2\\ ...\\ \theta_n\\ \end{bmatrix}$$
+
+
+Or
+
+$$P(\theta)= \begin{bmatrix} \theta_1...\theta_n \end{bmatrix} \begin{bmatrix}x^{2}_{11}\theta_1+...+x^{2}_{1n}\theta_n\\ x^{2}_{21}\theta_1+...+x^{2}_{2n}\theta_n\\ ...\\ x^{2}_{n1}\theta_1+...+x^{2}_{nn}\theta_n\end{bmatrix}$$
+
+Or
+
+$$P(\theta)=\theta_1(x^{2}_{11}\theta_1+...+x^{2}_{1n}\theta_n)+\theta_2(x^{2}_{21}\theta_1+...+x^{2}_{2n}\theta_n)+...+\theta_n(x^{2}_{n1}\theta_1+...+x^{2}_{nn}\theta_n)$$
+
+
+Let's consider the $$\frac{\partial P}{\partial \theta_1}$$, from which we can intuitively calculate the rest:
+
+$$\frac{\partial P}{\partial \theta_1}=(2\theta_1X^{2}_{11}+\theta_2X^{2}_{12}+...+\theta_nX^{2}_{1n})+\theta_2X^{2}_{21}+...+\theta_nX^{2}_{n1}$$
+
+We know that $$X^{2}_{12}=X^{2}_{21}$$ and so on. Hence we can rewrite our equation as:
+
+$$\frac{\partial P}{\partial \theta_1}=2\theta_1X^{2}_{11}+2\theta_2X^{2}_{12}+...+2\theta_nX^{2}_{1n}$$
+
+The partial derivatives by $$\theta_2,\theta_3 ...\theta_n$$  are similar. Collecting the sequence of partial derivatives back into a vector equation, we get:
+
+$$\frac{\partial P}{\partial \theta}=2X^2\theta=2X^TX\theta$$
+
+Now lets go for $$Q$$ 
 
 $$Q(\theta)=2(X\theta)^Ty$$
 
@@ -120,4 +152,4 @@ Assuming that the matrix $$X^TX$$ is invertible(non-singular), we can multiply b
 
 $$\theta=(X^TX)^{-1}X^Ty$$
 
-which is the  ` Normal Equation for Linear Regression`.
+which is the  `Normal Equation for Linear Regression`.
