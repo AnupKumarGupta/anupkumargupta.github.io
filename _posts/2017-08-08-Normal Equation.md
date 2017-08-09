@@ -4,7 +4,7 @@ title:  "Normal Equation for Linear Regression"
 excerpt: "A step by step guide for solving the problem of Multivariate Linear Regression, using the Normal Equations..."
 ---
 
-Hi guys. For the last couple of weeks I have been taking an awesome course on `Machine Learning`.  I was going through the topic `Multivariate Linear Regression` in which I was introduced `Normal Equation`. The instructor presented the equation, but the derivation was left out for some reasons. I managed to perform a step-by-step derivation and I am sharing it with you. Let's get started 
+Hi guys. For the last couple of weeks I have been taking an awesome course on `Machine Learning`.  I was going through the topic `Multivariate Linear Regression` in which I was introduced `Normal Equation`. The instructor presented the equation, but the derivation was left out for some reasons. I managed to perform a step-by-step derivation and I am sharing it with you. Let's get started.. 
 
 
 Let's us assume we are given the `hypothesis function` as: 
@@ -23,9 +23,9 @@ Let us consider the parameter vector as follows:
 
 $$\theta = \begin{bmatrix} \theta_0\\ \theta_1\\ ...\\ \theta_n \end{bmatrix}$$  
 
-Now the question arises why a matrix ? We have a system of linear equations here and these equations can easily handled by matrix algebra $$($$or linear algebra$$)$$.
+Now the question arises why a matrix? We have a system of linear equations here and these equations can easily handled by matrix algebra $$($$or linear algebra$$)$$.
 
-Now we consider our feature vector as 
+Now we consider our feature vector as: 
 
 $$x = \begin{bmatrix} 1\\ x_1\\ ...\\ x_n \end{bmatrix}$$ 
 
