@@ -4,7 +4,7 @@ title:  "Normal Equation for Linear Regression"
 excerpt: "A step by step guide for solving the problem of Multivariate Linear Regression, using the Normal Equations..."
 ---
 
-Hi guys. For the last couple of weeks I have been taking an awesome course on `Machine Learning`.  I was going through the topic `Multivariate Linear Regression` in which I was introduced `Normal Equation`. The instructor presented the equation, but the derivation was left out for some reasons. I managed to perform a step-by-step derivation and I am sharing it with you. Let's get started.. 
+Hi guys. For the last couple of weeks I have been taking an awesome course on `Machine Learning`.  I was going through the topic `Multivariate Linear Regression` in which I was introduced to `Normal Equation`. The instructor presented the equation, but the derivation was left out for some reasons. I managed to perform a step-by-step derivation and I am sharing it with you. Let's get started.. 
 
 
 Let's us assume we are given the `hypothesis function` as: 
