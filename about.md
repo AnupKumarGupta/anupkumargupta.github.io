@@ -26,4 +26,4 @@ I am a Software Developer, a Writer and Mathematics lover.
 * Winner of Anti-Ragging Poster Making Competition conducted by Cultural Society of College
 * I have a Personal non-techie [blog](https://anupkumarguptablog.wordpress.com/), do visit it too.
 
-You can find my [Resume](https://goo.gl/k0bHXf){:target="_blank"} here and if you find anything interesting to talk upon, do ping [me](mailto:contact@anupkumargupta.me).
+You can find my [Resume](https://goo.gl/dJM62o){:target="_blank"} here and if you find anything interesting to talk upon, do ping [me](mailto:contact@anupkumargupta.me).
