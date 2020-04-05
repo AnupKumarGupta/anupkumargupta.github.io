@@ -9,7 +9,7 @@ I am a Software Developer, a Writer and Mathematics lover.
 
 ### Education
 
-* MS (Research), Computer Science and Engineering
+* MS \(Research\), Computer Science and Engineering
 * B.Tech, Computer Science and Engineering
 
 ### Work Experience
