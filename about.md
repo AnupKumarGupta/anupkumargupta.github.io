@@ -7,9 +7,17 @@ title: About Me
 
 I am a Software Developer, a Writer and Mathematics lover.
 
+
+During the day, I’m pursuing my masters in Computer Science and Engineering. Down goes the sun, and I turn into a Machine Learning & Python dev. 
+
+Currently pursuing research under supervision of [Dr Puneet Gupta](http://people.iiti.ac.in/~puneet/) on Deep Learning and related fields. 
+
+When I’m not into tech, I like to immerse myself in the magical world of books. To know more about me checkout my [GitHub](https://github.com/AnupKumarGupta) profile. If you think, we have something in common, do ping me!
+
+
 ### Education
 
-* MS \(Research\), Computer Science and Engineering
+* MS Research, Computer Science and Engineering [Indian Institue of Technology, Indore](http://www.iiti.ac.in/)
 * B.Tech, Computer Science and Engineering
 
 ### Work Experience

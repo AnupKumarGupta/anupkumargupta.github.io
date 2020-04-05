@@ -17,16 +17,16 @@ permalink:              blog/:categories/:title/
 title:            Anup Kumar Gupta
 tagline:          'Coder | Writer | Open Source Enthusiast'
 url:              http://anupkumargupta.me
-baseurl:          '/'
+baseurl:          ''
 
 author:
   name:           'Anup Kumar Gupta'
   url:            'http://anupkumargupta.me'
-  email:          'contact@anupkumargupta.me'
+  email:          'reachanupgupta@gmail.com'
   github:         'https://github.com/AnupKumarGupta'
   stackoverflow:  'http://stackoverflow.com/users/6521550/anup-kumar-gupta'
   linkedin:       'https://www.linkedin.com/in/anupkumargupta/'
-
+  whatsapp:       'https://wa.me/918800764516'
 
 
 collections:
